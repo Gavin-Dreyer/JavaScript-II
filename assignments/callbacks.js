@@ -40,25 +40,82 @@ const items = ['Pencil', 'Notebook', 'yo-yo', 'Gum'];
 
 
 function getLength(arr, cb) {
+  return cb(arr.length);
   // getLength passes the length of the array into the callback.
 }
 
+function getLength2(length) {
+  return length;
+}
+  
+const test1 = getLength(items, getLength2);
+console.log(test1);
+
+
+
+
 function last(arr, cb) {
+  return cb(arr.pop());
   // last passes the last item of the array into the callback.
 }
 
+function getLast(popped) {
+  return popped;
+}
+
+const test2 = last(items, getLast);
+
+console.log(test2);
+
+
+
 function sumNums(x, y, cb) {
+  return cb(x + y);
   // sumNums adds two numbers (x, y) and passes the result to the callback.
 }
 
+function getNumsAdd(nums){
+  return nums;
+}
+
+const test3 = sumNums(1, 2, getNumsAdd);
+console.log(test3);
+
+
+
+
+
 function multiplyNums(x, y, cb) {
+  return cb(x * y);
   // multiplyNums multiplies two numbers and passes the result to the callback.
 }
 
+function getNumsMul(nums){
+  return nums;
+}
+
+const test4 = multiplyNums(1, 2, getNumsMul);
+console.log(test4);
+
+
+
+
 function contains(item, list, cb) {
+  return cb(list.includes(item))
   // contains checks if an item is present inside of the given array/list.
   // Pass true to the callback if it is, otherwise pass false.
 }
+
+function arrContains(word){
+  return word;
+}
+
+const test5 = contains('Pencil', items, arrContains);
+console.log(test5);
+
+
+
+
 
 /* STRETCH PROBLEM */
 

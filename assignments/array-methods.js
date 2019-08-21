@@ -58,28 +58,69 @@ const runners = [
 // ==== Challenge 1: Use .forEach() ====
 // The event director needs both the first and last names of each runner for their running bibs. Combine both the first and last names and populate a new array called `fullNames`. This array will contain just strings.
 let fullNames = [];
+runners.forEach(function(data){
+  fullNames.push(`${data.first_name} ${data.last_name}`)
+})
 console.log(fullNames);
 
 // ==== Challenge 2: Use .map() ====
 // The event director needs to have all the runners' first names in uppercase because the director BECAME DRUNK WITH POWER. Populate an array called `firstNamesAllCaps`. This array will contain just strings.
 let firstNamesAllCaps = [];
+runners.map(function(data){
+  firstNamesAllCaps.push(`${data.first_name.toUpperCase()}`)
+})
+
 console.log(firstNamesAllCaps);
 
 // ==== Challenge 3: Use .filter() ====
 // The large shirts won't be available for the event due to an ordering issue. We need a filtered version of the runners array, containing only those runners with large sized shirts so they can choose a different size. This will be an array of objects.
 let runnersLargeSizeShirt = [];
+const largeShirts = runners.filter(function(data){
+  return data.shirt_size === "L"
+});
+
+runnersLargeSizeShirt.push(largeShirts);
+
 console.log(runnersLargeSizeShirt);
 
 // ==== Challenge 4: Use .reduce() ====
 // The donations need to be tallied up and reported for tax purposes. Add up all the donations and save the total into a ticketPriceTotal variable.
-let ticketPriceTotal = 0;
+const ticketPriceTotal = runners.reduce(function(acc, data){
+  return acc + data.donation;
+}, 0)
+
 console.log(ticketPriceTotal);
 
 // ==== Challenge 5: Be Creative ====
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
-// Problem 1
+// Problem 1 = I want to say hi to each person using first and last name and in a string
+const hello = runners.map(function(data){
+  return `Hi ${data.first_name} ${data.last_name}`
+})
 
-// Problem 2
+console.log(hello);
+// Problem 2 = I want to see what the biggest donation was
+const bDA = [];
 
-// Problem 3
+const bigDono = runners.filter(function(data){
+  return data.donation > 200;
+});
+
+bigDono.map(function(datas){
+  bDA.push(datas.donation);
+})
+
+const biggestDonation = bDA.sort((a,b)=> a-b)[bDA.length-1];
+
+console.log(biggestDonation);
+
+// Problem 3 = I want sort alphabetically and see how much was donated
+const alpha = [];
+
+runners.map(function(data){
+  alpha.push(`${data.first_name} ${data.donation}`)
+})
+
+
+console.log(alpha.sort());
